@@ -193,3 +193,4 @@ noremap \\| :Tabularize /\|<CR>
 nnoremap <Leader>t :TagbarOpen fjc<CR>
 
 vnoremap // y:Ggrep <C-R>"<CR>
+noremap <Leader>s :%s/

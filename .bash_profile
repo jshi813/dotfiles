@@ -10,7 +10,5 @@ alias bbs='brazil-build server'
 alias pp='post-review --pull-request'
 alias krbcc='kinit -e aes128-cts-hmac-sha1-96 -c /tmp/krbcc__; export KRB5CCNAME=/tmp/krbcc__'
 alias odin='ssh -L 2009:localhost:2009 sjiachen.aka.corp.amazon.com -f -N'
-alias gck='git checkout .'
-alias gsu='git branch --set-upstream-to=origin/mainline'
 
 [ -s "/Users/sjiachen/.scm_breeze/scm_breeze.sh" ] && source "/Users/sjiachen/.scm_breeze/scm_breeze.sh"
