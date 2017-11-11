@@ -23,6 +23,15 @@ alias pp='post-review --pull-request'
 alias krbcc='kinit -e aes128-cts-hmac-sha1-96 -c /tmp/krbcc__; export KRB5CCNAME=/tmp/krbcc__'
 alias odin='ssh -L 2009:localhost:2009 sjiachen.aka.corp.amazon.com -f -N'
 alias gdtr='git diff-tree --no-commit-id --name-only -r'
+alias beta='ssh -F /dev/null product-tax-cc-2a-66202f1e.us-west-2.amazon.com'
+
+function code {
+    open https://code.amazon.com/search\?term\="$1"
+}
+
+function wk {
+    open https://w.amazon.com/index.php/Special:Search\?search\="$1"
+}
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -65,7 +74,7 @@ alias gdtr='git diff-tree --no-commit-id --name-only -r'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx vi-mode web-search zsh-autosuggestions)
+plugins=(aws git jsontools osx vi-mode web-search zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 

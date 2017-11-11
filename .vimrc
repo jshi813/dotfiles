@@ -11,6 +11,14 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
 "
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -58,8 +66,12 @@ set incsearch
 set showmatch
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-colorscheme monokai
+if has('gui_running')
+    colorscheme solarized
+    set background=dark
+else
+    colorscheme monokai
+endif
 
 """""""""""""""""""""""""
 " Keybindings
@@ -72,6 +84,7 @@ vnoremap @ :normal! @
 
 " Toggles
 set pastetoggle=<F1>
+
 " the nmap is just for quicker powerline feedback
 nmap <silent> <F1>      :set invpaste<CR>
 nmap          <F2>      :setlocal spell!<CR>
@@ -140,7 +153,7 @@ let g:UltiSnipsListSnippets = '<c-h>'
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <Leader>gg :Ggrep <cword> *<CR>
+nnoremap <C-f> :Ggrep <cword> *<CR>
 
 nnoremap <Leader>a :Ack
 
@@ -161,16 +174,13 @@ let g:miniBufExplVSplit = 20
 
 let g:airline#extensions#tabline#enabled = 1
 
-let g:syntastic_enable_signs=1
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['c', 'scss', 'html', 'scala'] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-let g:quickfixsigns_classes=['qfl', 'vcsdiff', 'breakpoints']
-
-" From https://github.com/tpope/vim-fugitive/blob/master/README.markdown:
-" automatically open quickfix window after :Ggrep
-autocmd QuickFixCmdPost *grep* cwindow
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -183,14 +193,18 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 let g:ctrlp_map = '<c-p>'
 
-noremap \= :Tabularize /=<CR>
-noremap \: :Tabularize /^[^:]*:\zs/l0l1<CR>
-noremap \> :Tabularize /=><CR>
-noremap \, :Tabularize /,\zs/l0l1<CR>
-noremap \{ :Tabularize /{<CR>
-noremap \\| :Tabularize /\|<CR>
-
 nnoremap <Leader>t :TagbarOpen fjc<CR>
 
 vnoremap // y:Ggrep <C-R>"<CR>
 noremap <Leader>s :%s/
+noremap <Leader>g :Ggrep -i 
+noremap <Leader>p :%w !pbcopy<CR>
+
+autocmd QuickFixCmdPost *grep* cwindow
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+set noswapfile
