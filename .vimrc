@@ -18,6 +18,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'henrik/vim-indexed-search'
 
 "
 " " The following are examples of different formats supported.
@@ -135,7 +136,6 @@ noremap <S-k> gJ
 " Write file when you forget to use sudo
 cmap w!! w !sudo tee % >/dev/null
 nnoremap <Leader>b :CtrlPBuffer<cr>
-nnoremap <C-u> :GundoToggle<CR>
 
 " TODO Merge the NERDTreeFind with Toggle inteilligently.
 nnoremap <C-g> :NERDTreeToggle<cr>
@@ -160,7 +160,6 @@ nnoremap <Leader>a :Ack
 " Put a space around comment markers
 let g:NERDSpaceDelims = 1
 
-nnoremap <C-y> :YRShow<cr>
 let g:yankring_history_dir = '$HOME/.vim'
 let g:yankring_manual_clipboard_check = 0
 
@@ -192,8 +191,6 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_regexp = 1
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files']
 let g:ctrlp_map = '<c-p>'
-
-nnoremap <Leader>t :TagbarOpen fjc<CR>
 
 vnoremap // y:Ggrep <C-R>"<CR>
 noremap <Leader>s :%s/
