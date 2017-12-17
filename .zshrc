@@ -7,7 +7,7 @@ export ZSH=/Users/sjiachen/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 export BRAZIL_CLI_BIN=/apollo/env/SDETools/bin
 alias desk='ssh dev-dsk-sjiachen-2b-ce348e38.us-west-2.amazon.com'
@@ -24,6 +24,7 @@ alias krbcc='kinit -e aes128-cts-hmac-sha1-96 -c /tmp/krbcc__; export KRB5CCNAME
 alias odin='ssh -L 2009:localhost:2009 sjiachen.aka.corp.amazon.com -f -N'
 alias gdtr='git diff-tree --no-commit-id --name-only -r'
 alias beta='ssh -F /dev/null product-tax-cc-2a-66202f1e.us-west-2.amazon.com'
+export TERM=xterm-256color
 
 function code {
     open https://code.amazon.com/search\?term\="$1"
