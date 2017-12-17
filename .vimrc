@@ -2,6 +2,7 @@
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -16,6 +17,11 @@ Plugin 'AutoComplPop'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'henrik/vim-indexed-search'
 Plugin 'tpope/vim-surround'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'sirver/ultisnips'
+Plugin 'awk.vim'
 call vundle#end()
 
 syntax on
@@ -46,6 +52,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set background=dark " or light if you prefer the light version
 colo two-firewatch
 let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
+"set mouse=a
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " key mappings
 noremap k gk
@@ -54,8 +63,14 @@ noremap j gj
 let mapleader=","
 let localmapleader=","
 
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+
 vnoremap . :normal .<CR>
 vnoremap @ :normal! @
+
+" save and quit
+noremap <C-w> :w<cr>
 
 " Movement across splits
 noremap <C-j> <C-w>j
@@ -75,8 +90,11 @@ nnoremap \| :vsplit<cr>
 vmap s :!sort<CR>
 vmap u :!sort -u<CR>
 
+noremap <C-a> :Ag<CR>
+noremap <C-h> :History:<CR>
+
 " Write file when you forget to use sudo
-nnoremap <Leader>b :CtrlPBuffer<cr>
+nnoremap <C-b> :CtrlPBuffer<cr>
 
 " TODO Merge the NERDTreeFind with Toggle inteilligently.
 nnoremap <C-g> :NERDTreeToggle<cr>
@@ -87,12 +105,28 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeShowBookmarks=1
 let NERDTreeShowFiles=1
 
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
 
 noremap <Leader>s :%s/
 noremap <Leader>g :Ggrep -i 
 noremap <Leader>p :%w !pbcopy<CR>
+noremap <Leader>a :%!awk 
 
 set noswapfile
 
