@@ -14,7 +14,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'AutoComplPop'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'henrik/vim-indexed-search'
 Plugin 'tpope/vim-surround'
 Plugin 'junegunn/fzf'
@@ -72,6 +71,11 @@ vnoremap @ :normal! @
 " save and quit
 noremap <C-w> :w<cr>
 
+" auto append closing characters
+inoremap { {}<Left>
+inoremap ( ()<Left>
+inoremap {<CR> {<CR>}<Esc>O
+
 " Movement across splits
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -86,6 +90,8 @@ nnoremap <Right> 3<C-w>>
 
 nnoremap _ :split<cr>
 nnoremap \| :vsplit<cr>
+
+nnoremap <Leader>/ :nohlsearch<CR>
 
 vmap s :!sort<CR>
 vmap u :!sort -u<CR>
@@ -129,4 +135,6 @@ noremap <Leader>p :%w !pbcopy<CR>
 noremap <Leader>a :%!awk 
 
 set noswapfile
+
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
