@@ -2,7 +2,7 @@
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -21,6 +21,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
 Plugin 'awk.vim'
+Plugin 'hynek/vim-python-pep8-indent'
 call vundle#end()
 
 syntax on
@@ -137,4 +138,4 @@ noremap <Leader>a :%!awk
 set noswapfile
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
+autocmd VimEnter * noremap <C-h> <C-w>h
