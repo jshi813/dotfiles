@@ -22,6 +22,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
 Plugin 'awk.vim'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 
 syntax on
@@ -29,6 +30,7 @@ filetype plugin indent on
 set number relativenumber
 set cursorline
 syntax enable
+colorscheme CandyPaper
 
 " format
 set autoindent smartindent
@@ -46,12 +48,13 @@ set hlsearch
 set incsearch
 set showmatch
 
-set termguicolors
+"set termguicolors
+set t_Co=256
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set background=dark " or light if you prefer the light version
-colo two-firewatch
-let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
+"colo two-firewatch
+"let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
 "set mouse=a
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
