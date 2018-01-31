@@ -67,7 +67,6 @@ let mapleader=","
 let localmapleader=","
 
 noremap <Leader>y "*y
-noremap <Leader>p "*p
 
 vnoremap . :normal .<CR>
 vnoremap @ :normal! @
@@ -77,7 +76,6 @@ noremap <C-w> :w<cr>
 
 " auto append closing characters
 inoremap { {}<Left>
-inoremap ( ()<Left>
 inoremap {<CR> {<CR>}<Esc>O
 
 " Movement across splits
