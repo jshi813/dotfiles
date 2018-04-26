@@ -10,3 +10,14 @@ vim -c 'PluginInstall' -c 'qa!'
 #mv ~/.zshrc ~/.zshrc.orig
 #cp .zshrc ~/.zshrc
 
+# add scm breeze and fzf
+if [ -d ~/.scm_breeze ]; then
+    git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
+    ~/.scm_breeze/install.sh
+    source ~/.bashrc   # or source ~/.zshrc
+fi
+
+if [ -d ~/.fzf ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
