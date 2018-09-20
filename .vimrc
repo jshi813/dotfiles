@@ -30,7 +30,7 @@ filetype plugin indent on
 set number relativenumber
 set cursorline
 syntax enable
-colorscheme CandyPaper
+colorscheme gruvbox
 
 " format
 set autoindent smartindent
@@ -96,7 +96,6 @@ nnoremap \| :vsplit<cr>
 nnoremap <Leader>/ :nohlsearch<CR>
 
 vmap s :!sort<CR>
-vmap u :!sort -u<CR>
 
 noremap <C-a> :Ag<CR>
 noremap <C-h> :History:<CR>
