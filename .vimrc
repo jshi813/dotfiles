@@ -23,6 +23,10 @@ Plugin 'sirver/ultisnips'
 Plugin 'awk.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'alvan/vim-closetag'
+
 call vundle#end()
 
 syntax on
@@ -139,3 +143,5 @@ set noswapfile
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 autocmd VimEnter * noremap <C-h> <C-w>h
+
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'
