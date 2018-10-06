@@ -18,14 +18,13 @@ Plugin 'henrik/vim-indexed-search'
 Plugin 'tpope/vim-surround'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'honza/vim-snippets'
-Plugin 'sirver/ultisnips'
 Plugin 'awk.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'alvan/vim-closetag'
+Plugin 'junegunn/gv.vim'
 
 call vundle#end()
 
@@ -67,8 +66,20 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 noremap k gk
 noremap j gj
 
-let mapleader=","
-let localmapleader=","
+let mapleader=" "
+let localmapleader=" "
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 noremap <Leader>y "*y
 
@@ -77,10 +88,6 @@ vnoremap @ :normal! @
 
 " save and quit
 noremap <C-w> :w<cr>
-
-" auto append closing characters
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
 
 " Movement across splits
 noremap <C-j> <C-w>j
@@ -102,7 +109,6 @@ nnoremap <Leader>/ :nohlsearch<CR>
 vmap s :!sort<CR>
 
 noremap <C-a> :Ag<CR>
-noremap <C-h> :History:<CR>
 
 " Write file when you forget to use sudo
 nnoremap <C-b> :CtrlPBuffer<cr>
@@ -142,6 +148,5 @@ noremap <Leader>a :%!awk
 set noswapfile
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-autocmd VimEnter * noremap <C-h> <C-w>h
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'
