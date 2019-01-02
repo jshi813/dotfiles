@@ -2,8 +2,7 @@
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
-
+set rtp+=~/.fzf 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -34,6 +33,11 @@ set number relativenumber
 set cursorline
 syntax enable
 colorscheme gruvbox
+
+if &term == "screen"
+	let &t_ti = "\<Esc>[?47h"
+	let &t_te = "\<Esc>[?47l"
+endif
 
 " format
 set autoindent smartindent
@@ -139,6 +143,9 @@ let g:fzf_colors =
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
+
+nnoremap <Leader>o :copen<CR>
+nnoremap <Leader>] :cn<CR>
 
 noremap <Leader>s :%s/
 noremap <Leader>g :Ggrep -i 
