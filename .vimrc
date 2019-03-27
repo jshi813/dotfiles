@@ -24,6 +24,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'alvan/vim-closetag'
 Plugin 'junegunn/gv.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 
@@ -33,7 +35,6 @@ set number relativenumber
 set cursorline
 syntax enable
 colorscheme gruvbox
-
 if &term == "screen"
 	let &t_ti = "\<Esc>[?47h"
 	let &t_te = "\<Esc>[?47l"
@@ -105,17 +106,18 @@ nnoremap <Down>  3<C-w>+
 nnoremap <Left>  3<C-w><
 nnoremap <Right> 3<C-w>>
 
+
 nnoremap _ :split<cr>
 nnoremap \| :vsplit<cr>
-
 nnoremap <Leader>/ :nohlsearch<CR>
 
-vmap s :!sort<CR>
+vnoremap s :'<,'>s/
 
 noremap <C-a> :Ag<CR>
 
 " Write file when you forget to use sudo
 nnoremap <C-b> :CtrlPBuffer<cr>
+nnoremap <C-t> :CtrlPTag<cr>
 
 " TODO Merge the NERDTreeFind with Toggle inteilligently.
 nnoremap <C-g> :NERDTreeToggle<cr>
@@ -144,13 +146,16 @@ let g:fzf_colors =
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
 
+" quickfix
 nnoremap <Leader>o :copen<CR>
+nnoremap <Leader>[ :cp<CR>
 nnoremap <Leader>] :cn<CR>
 
-noremap <Leader>s :%s/
+noremap <Leader>s :s/
 noremap <Leader>g :Ggrep -i 
 noremap <Leader>p :%w !pbcopy<CR>
-noremap <Leader>a :%!awk 
+
+:nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
 set noswapfile
 
